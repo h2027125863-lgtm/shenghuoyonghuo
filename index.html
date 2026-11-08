@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN" style="background:transparent">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>从插座到起火</title>
+<style>
+html,body{margin:0;padding:0;background:transparent}
+body{padding:12px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;display:flex;flex-direction:column;align-items:center}
+#wrap{width:100%;max-width:900px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.lab{fill:#c8801e;font-size:25px;font-weight:500}
+.end{fill:#b8700f;font-size:28px;font-weight:700}
+.amb{fill:#e09a3a}
+.stk{fill:none;stroke:#e09a3a;stroke-linecap:round;stroke-linejoin:round}
+.arrow{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.head{fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.pop{opacity:.16;transform-box:fill-box;transform-origin:center}
+.play .pop{animation:pop .6s cubic-bezier(.3,1.5,.5,1) var(--d) both}
+.play .a1{animation:draw 2.4s ease-in-out .1s forwards}
+.play .a2{animation:draw 2.6s ease-in-out 3.2s forwards}
+.play .h1{animation:show .3s ease 2.4s forwards}
+.play .h2{animation:show .3s ease 5.7s forwards}
+.play .hot{animation:heat 1.6s ease 4.6s forwards}
+.play .glow{animation:glow 1.2s ease-in-out 3.6s infinite alternate}
+.flick{transform-box:fill-box;transform-origin:50% 100%}
+.play .flick{animation:flick .5s ease-in-out 6s infinite alternate}
+.play .heatw{animation:glow .9s ease-in-out 3.6s infinite alternate}
+#hint{font-size:13px;color:#b8861f;margin:6px 0 0;opacity:.7;transition:opacity .4s}
+.playing #hint{opacity:0}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}100%{opacity:1;transform:scale(1)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes show{to{opacity:1}}
+@keyframes heat{from{fill:#e09a3a}to{fill:#d9402a}}
+@keyframes glow{from{opacity:.45}to{opacity:1}}
+@keyframes flick{from{transform:scale(1,.9)}to{transform:scale(1.06,1.08)}}
+</style>
+</head>
+<body>
+<div id="wrap">
+<svg id="s" viewBox="0 0 900 520" role="img" aria-label="从插座、电线到起火的过程动画">
+<path class="arrow a1" pathLength="1" stroke="#a8620f" d="M70 330 C250 90 560 70 800 130"/>
+<g transform="translate(800,130) rotate(14)"><path class="head h1" stroke="#a8620f" d="M-18 -11 L0 0 L-18 11"/></g>
+<path class="arrow a2" pathLength="1" stroke="#b88a10" d="M810 240 C680 460 380 440 170 390"/>
+<g transform="translate(170,390) rotate(193.4)"><path class="head h2" stroke="#b88a10" d="M-18 -11 L0 0 L-18 11"/></g>
+
+<g transform="translate(100,238)"><g class="pop" style="--d:.5s"><text class="lab" text-anchor="middle">插座</text></g></g>
+<g transform="translate(412,82)"><g class="pop" style="--d:1.2s"><text class="lab" text-anchor="middle">电线</text></g></g>
+<g transform="translate(660,70)"><g class="pop" style="--d:1.9s"><text class="lab" text-anchor="middle">多个大功率电器</text></g></g>
+<g transform="translate(852,108)"><g class="pop" style="--d:2.5s"><text class="end" text-anchor="middle">用电</text></g></g>
+
+<g transform="translate(260,215)"><g class="pop" style="--d:.5s">
+<path class="amb" fill-rule="evenodd" d="M-18 -28H18A10 10 0 0 1 28 -18V18A10 10 0 0 1 18 28H-18A10 10 0 0 1 -28 18V-18A10 10 0 0 1 -18 -28ZM-15 -10h6v14h-6ZM9 -10h6v14h-6ZM-4 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z"/>
+</g></g>
+<g transform="translate(425,215)"><g class="pop" style="--d:1.2s">
+<path class="stk" stroke-width="7" d="M-38 18C-24 -34 -6 44 10 4S32 -26 42 -30"/>
+<path class="amb" d="M-54 10h14v16h-14Z"/><path class="amb" d="M-62 14h8v3h-8ZM-62 20h8v3h-8Z"/>
+</g></g>
+<g transform="translate(595,215)"><g class="pop" style="--d:1.9s">
+<path class="amb" fill-rule="evenodd" d="M-38 -14H38a6 6 0 0 1 6 6V8a6 6 0 0 1 -6 6H-38a6 6 0 0 1 -6 -6V-8a6 6 0 0 1 6 -6ZM-30 -6h10v12h-10ZM-5 -6h10v12h-10ZM20 -6h10v12h-10Z"/>
+<path class="stk" stroke-width="5" d="M44 0C56 0 56 -18 66 -18"/>
+</g></g>
+
+<g transform="translate(630,320)"><g class="pop" style="--d:3.3s">
+<path class="amb" fill-rule="evenodd" d="M-6 -30a6 6 0 0 1 12 0V8a14 14 0 1 1 -12 0ZM-2 -22h4V12h-4Z"/>
+<g class="heatw"><path class="stk" stroke-width="4" d="M24 -28q8 8 0 16q-8 8 0 16"/><path class="stk" stroke-width="4" d="M38 -32q8 8 0 16q-8 8 0 16"/></g>
+</g></g>
+<g transform="translate(460,330)"><g class="pop" style="--d:4.4s">
+<path class="amb hot" d="M-40 -8h80a8 8 0 0 1 0 16h-80a8 8 0 0 1 0 -16Z"/>
+<path class="amb hot" d="M-16 8v12a4 4 0 0 0 8 0v-12ZM6 8v22a4 4 0 0 0 8 0v-22Z"/>
+</g></g>
+<g transform="translate(290,322)"><g class="pop" style="--d:5.5s"><g class="flick">
+<path fill="#e8602c" d="M0 -40C6 -22 24 -14 24 6C24 24 12 34 0 34C-12 34 -24 24 -24 6C-24 -4 -16 -10 -12 -22C-8 -14 -4 -10 0 -40Z"/>
+<path fill="#f6c344" d="M0 -4C8 8 14 14 14 22C14 30 8 34 0 34C-8 34 -14 30 -14 22C-14 14 -6 8 0 -4Z"/>
+</g></g></g>
+
+<g transform="translate(730,420)"><g class="pop" style="--d:3.3s"><text class="lab" text-anchor="middle">线路过热</text></g></g>
+<g transform="translate(520,462)"><g class="pop" style="--d:4.4s"><text class="lab" text-anchor="middle">绝缘层熔化</text></g></g>
+<g transform="translate(300,458)"><g class="pop" style="--d:5.5s"><text class="lab" text-anchor="middle">引燃起火</text></g></g>
+<g transform="translate(70,430)"><g class="pop" style="--d:6s"><text class="end" text-anchor="middle">起火</text></g></g>
+</svg>
+<p id="hint" style="text-align:center">鼠标移入或触摸开始播放</p>
+</div>
+<script>
+var wrap=document.getElementById('wrap'),s=document.getElementById('s'),busy=false;
+function start(){
+if(busy)return;busy=true;
+s.classList.remove('play');wrap.classList.remove('playing');void s.getBoundingClientRect();
+s.classList.add('play');wrap.classList.add('playing');
+setTimeout(function(){busy=false},7000)}
+wrap.addEventListener('mouseenter',start);
+wrap.addEventListener('touchstart',start,{passive:true});
+wrap.addEventListener('click',start);
+</script>
+</body>
+</html>
